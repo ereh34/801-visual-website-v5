@@ -59,3 +59,34 @@ if ('IntersectionObserver' in window) {
     observer.observe(el);
   });
 }
+
+/* — LIGHTBOX — */
+(function () {
+  var lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+      var lightboxImg = document.getElementById('lightboxImg');
+        var lightboxClose = document.getElementById('lightboxClose');
+
+          function openLightbox(src, alt) {
+              lightboxImg.src = src;
+                  lightboxImg.alt = alt || '';
+                      lightbox.classList.add('active');
+                          document.body.style.overflow = 'hidden';
+                            }
+
+                              function closeLightbox() {
+                                  lightbox.classList.remove('active');
+                                      document.body.style.overflow = '';
+                                          lightboxImg.src = '';
+                                            }
+
+                                              document.querySelectorAll('.port-item').forEach(function (item) {
+                                                  var img = item.querySelector('img');
+                                                      if (!img) return;
+                                                          item.addEventListener('click', function () { openLightbox(img.src, img.alt); });
+                                                            });
+
+                                                              lightboxClose.addEventListener('click', closeLightbox);
+                                                                lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+                                                                  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+                                                                  }());
