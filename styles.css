@@ -201,6 +201,7 @@ h1.hero-h span { color: var(--blue-light); }
 .port-overlay-tag-co { color: #6bc47a; }
 .port-overlay h4 { font-size: 14px; font-weight: 700; color: var(--white); }
 .port-item img { width: 100%; height: auto; display: block; }
+.port-item img ~ .port-ph { display: none; }
 
 /* ══════════════════════════════════
    ABOUT / DARK STATS SECTION
