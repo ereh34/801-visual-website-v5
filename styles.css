@@ -549,6 +549,30 @@ footer { background: var(--dark); color: white; padding: 64px 0 0; }
   .lightbox-nav { width: 40px; height: 40px; font-size: 18px; }
   .lightbox-close { width: 40px; height: 40px; font-size: 28px; }
 }
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .nav-inner { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .services-grid, .values-grid, .cred-grid, .metrics-grid, .testimonial-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .process-steps { grid-template-columns: 1fr; }
+  .port-grid { columns: 1; }
+  .section-pad, .section-pad-sm { padding: 64px 0; }
+  .hero { padding: 120px 0 64px; }
+  .hero-stats { grid-template-columns: 1fr; }
+  .trust-corp-inner { gap: 20px; }
+  .instagram-grid { grid-template-columns: repeat(3,1fr); }
+  .cta-band-btns { flex-direction: column; align-items: center; }
+  .page-hero { padding: 120px 0 56px; }
+  .lightbox-content { max-width: 95vw; }
+  #lightboxImg { max-height: 80vh; }
+  .lightbox-nav { width: 40px; height: 40px; font-size: 18px; }
+  .lightbox-close { width: 40px; height: 40px; font-size: 28px; }
+}
   
 }
 @media (max-width: 768px) {
