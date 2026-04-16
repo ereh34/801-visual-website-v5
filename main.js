@@ -76,23 +76,29 @@ if ('IntersectionObserver' in window) {
 
   // Initialize lightbox photos on page load
   function initLightbox() {
-    lightboxPhotos = Array.from(document.querySelectorAll('[data-lightbox="true"] img')).map((img) => {
+    lightboxPhotos = Array.from(document.querySelectorAll('[data-lightbox="true"]')).map((item) => {
+      const img = item.querySelector('img');
+      if (!img) return null;
       return {
         src: img.src,
         alt: img.alt,
-        title: img.closest('.port-item').querySelector('h4')?.textContent || 'Photo'
+        title: item.querySelector('h4')?.textContent || 'Photo'
       };
-    });
+    }).filter(Boolean);
   }
 
-  // Open lightbox
+  // Open lightbox on photo item click
   document.addEventListener('click', function(e) {
-    const img = e.target.closest('[data-lightbox="true"] img');
-    if (img) {
+    const item = e.target.closest('[data-lightbox="true"]');
+    if (item) {
+      const img = item.querySelector('img');
+      if (!img) return;
       const photoSrc = img.src;
       currentIndex = lightboxPhotos.findIndex(p => p.src === photoSrc);
-      showPhoto(currentIndex);
-      lightbox.classList.add('active');
+      if (currentIndex >= 0) {
+        showPhoto(currentIndex);
+        lightbox.classList.add('active');
+      }
     }
   });
 
