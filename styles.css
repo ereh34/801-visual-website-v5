@@ -450,6 +450,85 @@ footer { background: var(--dark); color: white; padding: 64px 0 0; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* ══════════════════════════════════
+   LIGHTBOX
+   ══════════════════════════════════ */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 17, 23, 0.95);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.lightbox-overlay.active {
+  display: flex;
+}
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lightboxImg {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2001;
+  transition: color 0.2s;
+}
+.lightbox-close:hover {
+  color: rgba(255, 255, 255, 1);
+}
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.lightbox-prev {
+  left: 20px;
+}
+.lightbox-next {
+  right: 20px;
+}
+
+/* ══════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════ */
 @media (max-width: 1024px) {
@@ -464,7 +543,12 @@ footer { background: var(--dark); color: white; padding: 64px 0 0; }
   .svc-photo { display: none; }
   .who-grid, .packages-grid, .case-grid, .paths-grid { grid-template-columns: 1fr; }
   .instagram-grid { grid-template-columns: repeat(3,1fr); }
-    .port-grid { columns: 2; }
+  .port-grid { columns: 2; }
+  .lightbox-content { max-width: 95vw; }
+  #lightboxImg { max-height: 80vh; }
+  .lightbox-nav { width: 40px; height: 40px; font-size: 18px; }
+  .lightbox-close { width: 40px; height: 40px; font-size: 28px; }
+}
   
 }
 @media (max-width: 768px) {

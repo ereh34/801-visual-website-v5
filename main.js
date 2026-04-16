@@ -60,33 +60,82 @@ if ('IntersectionObserver' in window) {
   });
 }
 
-/* — LIGHTBOX — */
-(function () {
-  var lightbox = document.getElementById('lightbox');
-    if (!lightbox) return;
-      var lightboxImg = document.getElementById('lightboxImg');
-        var lightboxClose = document.getElementById('lightboxClose');
+/* ── LIGHTBOX (work.html) ── */
+(function() {
+  const lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
 
-          function openLightbox(src, alt) {
-              lightboxImg.src = src;
-                  lightboxImg.alt = alt || '';
-                      lightbox.classList.add('active');
-                          document.body.style.overflow = 'hidden';
-                            }
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
 
-                              function closeLightbox() {
-                                  lightbox.classList.remove('active');
-                                      document.body.style.overflow = '';
-                                          lightboxImg.src = '';
-                                            }
+  let currentIndex = 0;
+  let lightboxPhotos = [];
 
-                                              document.querySelectorAll('.port-item').forEach(function (item) {
-                                                  var img = item.querySelector('img');
-                                                      if (!img) return;
-                                                          item.addEventListener('click', function () { openLightbox(img.src, img.alt); });
-                                                            });
+  // Initialize lightbox photos on page load
+  function initLightbox() {
+    lightboxPhotos = Array.from(document.querySelectorAll('[data-lightbox="true"] img')).map((img) => {
+      return {
+        src: img.src,
+        alt: img.alt,
+        title: img.closest('.port-item').querySelector('h4')?.textContent || 'Photo'
+      };
+    });
+  }
 
-                                                              lightboxClose.addEventListener('click', closeLightbox);
-                                                                lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
-                                                                  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
-                                                                  }());
+  // Open lightbox
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('[data-lightbox="true"] img');
+    if (img) {
+      const photoSrc = img.src;
+      currentIndex = lightboxPhotos.findIndex(p => p.src === photoSrc);
+      showPhoto(currentIndex);
+      lightbox.classList.add('active');
+    }
+  });
+
+  // Close lightbox
+  lightboxClose.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+
+  // Navigation
+  lightboxPrev.addEventListener('click', () => navigate(-1));
+  lightboxNext.addEventListener('click', () => navigate(1));
+
+  function navigate(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = lightboxPhotos.length - 1;
+    if (currentIndex >= lightboxPhotos.length) currentIndex = 0;
+    showPhoto(currentIndex);
+  }
+
+  function showPhoto(index) {
+    if (lightboxPhotos.length === 0) return;
+    lightboxImg.src = lightboxPhotos[index].src;
+    lightboxImg.alt = lightboxPhotos[index].alt;
+    lightboxTitle.textContent = lightboxPhotos[index].title;
+  }
+
+  // Close on background click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  });
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLightbox);
+  } else {
+    initLightbox();
+  }
+})();
