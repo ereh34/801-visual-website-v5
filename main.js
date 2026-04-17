@@ -78,25 +78,38 @@ if ('IntersectionObserver' in window) {
   function initLightbox() {
     lightboxPhotos = Array.from(document.querySelectorAll('[data-lightbox="true"]')).map((item) => {
       const img = item.querySelector('img');
-      if (!img) return null;
-      return {
-        src: img.src,
-        alt: img.alt,
-        title: item.querySelector('h4')?.textContent || 'Photo'
-      };
+      const iframe = item.querySelector('iframe');
+      if (img) {
+        return {
+          type: 'image',
+          src: img.src,
+          alt: img.alt,
+          title: item.querySelector('h4')?.textContent || 'Photo'
+        };
+      } else if (iframe) {
+        return {
+          type: 'video',
+          src: iframe.src,
+          title: item.querySelector('h4')?.textContent || 'Video'
+        };
+      }
+      return null;
     }).filter(Boolean);
   }
 
-  // Open lightbox on photo item click
+  // Open lightbox on item click
   document.addEventListener('click', function(e) {
     const item = e.target.closest('[data-lightbox="true"]');
     if (item) {
       const img = item.querySelector('img');
-      if (!img) return;
-      const photoSrc = img.src;
-      currentIndex = lightboxPhotos.findIndex(p => p.src === photoSrc);
+      const iframe = item.querySelector('iframe');
+      let src;
+      if (img) src = img.src;
+      else if (iframe) src = iframe.src;
+      else return;
+      currentIndex = lightboxPhotos.findIndex(p => p.src === src);
       if (currentIndex >= 0) {
-        showPhoto(currentIndex);
+        showMedia(currentIndex);
         lightbox.classList.add('active');
       }
     }
@@ -123,14 +136,31 @@ if ('IntersectionObserver' in window) {
     currentIndex += direction;
     if (currentIndex < 0) currentIndex = lightboxPhotos.length - 1;
     if (currentIndex >= lightboxPhotos.length) currentIndex = 0;
-    showPhoto(currentIndex);
+    showMedia(currentIndex);
   }
 
-  function showPhoto(index) {
+  function showMedia(index) {
     if (lightboxPhotos.length === 0) return;
-    lightboxImg.src = lightboxPhotos[index].src;
-    lightboxImg.alt = lightboxPhotos[index].alt;
-    lightboxTitle.textContent = lightboxPhotos[index].title;
+    const media = lightboxPhotos[index];
+    const mediaContainer = document.getElementById('lightboxMedia');
+    mediaContainer.innerHTML = '';
+    if (media.type === 'image') {
+      const img = document.createElement('img');
+      img.src = media.src;
+      img.alt = media.alt;
+      mediaContainer.appendChild(img);
+    } else if (media.type === 'video') {
+      const iframe = document.createElement('iframe');
+      iframe.src = media.src;
+      iframe.style.border = 'none';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.allow = 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;';
+      iframe.allowFullscreen = true;
+      mediaContainer.appendChild(iframe);
+    }
+    lightboxTitle.textContent = media.title;
+    lightboxTitle.style.display = 'block';
   }
 
   // Close on background click
