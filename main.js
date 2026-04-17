@@ -77,21 +77,26 @@ if ('IntersectionObserver' in window) {
   // Initialize lightbox photos on page load
   function initLightbox() {
     lightboxPhotos = Array.from(document.querySelectorAll('[data-lightbox="true"]')).map((item) => {
-      const img = item.querySelector('img');
-      const iframe = item.querySelector('iframe');
-      if (img) {
-        return {
-          type: 'image',
-          src: img.src,
-          alt: img.alt,
-          title: item.querySelector('h4')?.textContent || 'Photo'
-        };
-      } else if (iframe) {
-        return {
-          type: 'video',
-          src: iframe.src,
-          title: item.querySelector('h4')?.textContent || 'Video'
-        };
+      const mediaType = item.getAttribute('data-media-type');
+      if (mediaType === 'video') {
+        const iframe = item.querySelector('iframe');
+        if (iframe) {
+          return {
+            type: 'video',
+            src: iframe.src,
+            title: item.querySelector('h4')?.textContent || 'Video'
+          };
+        }
+      } else {
+        const img = item.querySelector('img');
+        if (img && img.alt !== 'Game Day Video Thumbnail') {
+          return {
+            type: 'image',
+            src: img.src,
+            alt: img.alt,
+            title: item.querySelector('h4')?.textContent || 'Photo'
+          };
+        }
       }
       return null;
     }).filter(Boolean);
