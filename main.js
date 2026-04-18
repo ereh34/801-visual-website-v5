@@ -106,12 +106,16 @@ if ('IntersectionObserver' in window) {
   document.addEventListener('click', function(e) {
     const item = e.target.closest('[data-lightbox="true"]');
     if (item) {
-      const img = item.querySelector('img');
-      const iframe = item.querySelector('iframe');
+      const mediaType = item.getAttribute('data-media-type');
       let src;
-      if (img) src = img.src;
-      else if (iframe) src = iframe.src;
-      else return;
+      if (mediaType === 'video') {
+        const iframe = item.querySelector('iframe');
+        if (iframe) src = iframe.src;
+      } else {
+        const img = item.querySelector('img');
+        if (img) src = img.src;
+      }
+      if (!src) return;
       currentIndex = lightboxPhotos.findIndex(p => p.src === src);
       if (currentIndex >= 0) {
         showMedia(currentIndex);
