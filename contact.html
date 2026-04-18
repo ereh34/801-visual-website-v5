@@ -118,14 +118,14 @@
                Option B: Netlify Forms:
                  Add the netlify attribute to the form tag
           -->
-          <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <form id="contactForm" action="https://formspree.io/f/xnjoyepa" method="POST">
             <div class="form-row">
-              <div class="form-group"><label class="form-label">First Name *</label><input type="text" name="first_name" class="form-input" placeholder="Jane" required></div>
-              <div class="form-group"><label class="form-label">Last Name *</label><input type="text" name="last_name" class="form-input" placeholder="Smith" required></div>
+              <div class="form-group"><label class="form-label">First Name *</label><input type="text" name="first_name" class="form-input" placeholder="Jane" required data-fs-field></div>
+              <div class="form-group"><label class="form-label">Last Name *</label><input type="text" name="last_name" class="form-input" placeholder="Smith" required data-fs-field></div>
             </div>
             <div class="form-group"><label class="form-label">Company / Organization *</label><input type="text" name="company" class="form-input" placeholder="Acme Corp" required></div>
             <div class="form-row">
-              <div class="form-group"><label class="form-label">Email *</label><input type="email" name="email" class="form-input" placeholder="jane@company.com" required></div>
+              <div class="form-group"><label class="form-label">Email *</label><input type="email" name="email" class="form-input" placeholder="jane@company.com" required data-fs-field><span data-fs-error="email" style="font-size:12px;color:#dc2626;display:block;margin-top:4px;"></span></div>
               <div class="form-group"><label class="form-label">Phone</label><input type="tel" name="phone" class="form-input" placeholder="(801) 810-4020"></div>
             </div>
             <div class="form-group">
@@ -179,7 +179,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group"><label class="form-label">Tell Us About Your Project *</label><textarea name="message" class="form-textarea" placeholder="Describe your project: what do you need, what is the occasion, who is the audience, and what would make it a success?" required></textarea></div>
+            <div class="form-group"><label class="form-label">Tell Us About Your Project *</label><textarea name="message" class="form-textarea" placeholder="Describe your project: what do you need, what is the occasion, who is the audience, and what would make it a success?" required data-fs-field></textarea></div>
             <div class="form-group">
               <label class="form-label">How Did You Find Us?</label>
               <select name="source" class="form-select">
@@ -194,11 +194,12 @@
             </div>
             <!-- Honeypot spam trap -->
             <input type="text" name="_gotcha" style="display:none">
-            <button type="submit" class="form-submit">Send My Message &rarr;</button>
+            <div data-fs-error style="font-size:13px;color:#dc2626;margin-bottom:12px;display:none;"></div>
+            <button type="submit" class="form-submit" data-fs-submit-btn>Send My Message &rarr;</button>
             <p class="form-note">We respond to all inquiries within 48 business hours.</p>
           </form>
 
-          <div class="form-success" id="formSuccess">
+          <div class="form-success" id="formSuccess" data-fs-success style="display:none;">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" style="margin:0 auto 12px;display:block;"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             <h3>Message Sent!</h3>
             <p>We've received your inquiry and will respond within 48 business hours. Follow <a href="https://www.instagram.com/801visual/" target="_blank" style="color:var(--blue);">@801visual</a> for behind-the-scenes content.</p>
@@ -284,20 +285,9 @@
 <script src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="main.js"></script>
 <script>
-  /* Handle form submission: shows success state */
-  var form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      var action = form.getAttribute('action');
-      /* If Formspree not yet connected, show success UI for demo */
-      if (!action || action.includes('YOUR_FORM_ID')) {
-        e.preventDefault();
-        form.style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-      }
-      /* If Formspree IS connected, let it submit normally */
-    });
-  }
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contactForm', formId: 'xnjoyepa' });
 </script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
