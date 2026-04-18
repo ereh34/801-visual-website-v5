@@ -453,7 +453,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 0; }
    LIGHTBOX
    ══════════════════════════════════ */
 .lightbox-overlay {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   background: rgba(13, 17, 23, 0.95);
@@ -461,21 +461,22 @@ footer { background: var(--dark); color: white; padding: 64px 0 0; }
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
 }
 .lightbox-overlay.active {
-  display: flex;
+  opacity: 1;
+  pointer-events: all;
 }
 .lightbox-content {
   position: relative;
   width: 90vw;
   height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 #lightboxMedia {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -585,34 +586,3 @@ footer { background: var(--dark); color: white; padding: 64px 0 0; }
   .lightbox-nav { width: 40px; height: 40px; font-size: 18px; }
   .lightbox-close { width: 40px; height: 40px; font-size: 28px; }
 }
-  
-}
-@media (max-width: 768px) {
-  .container { padding: 0 24px; }
-  .nav-inner { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .services-grid, .values-grid, .cred-grid, .metrics-grid, .testimonial-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
-  .process-steps { grid-template-columns: 1fr; }
-    .port-grid { columns: 1; }
-  .section-pad, .section-pad-sm { padding: 64px 0; }
-  .hero { padding: 120px 0 64px; }
-  .hero-stats { grid-template-columns: 1fr; }
-  .trust-corp-inner { gap: 20px; }
-  .instagram-grid { grid-template-columns: repeat(3,1fr); }
-  .cta-band-btns { flex-direction: column; align-items: center; }
-  .page-hero { padding: 120px 0 56px; }
-}
-
-
-/* ─────────────────────────────────────
-   LIGHTBOX
-      ───────────────────────────────────── */
-      .lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
-      .lightbox-overlay.active { opacity: 1; pointer-events: all; }
-      .lightbox-overlay img { max-width: 92vw; max-height: 90vh; object-fit: contain; border-radius: 4px; box-shadow: 0 8px 48px rgba(0,0,0,0.6); }
-      .lightbox-close { position: absolute; top: 20px; right: 28px; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; background: none; border: none; opacity: 0.7; transition: opacity 0.15s; font-family: sans-serif; }
-      .lightbox-close:hover { opacity: 1; }
