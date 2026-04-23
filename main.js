@@ -92,7 +92,7 @@ if ('IntersectionObserver' in window) {
         if (img && img.alt !== 'Game Day Video Thumbnail') {
           return {
             type: 'image',
-            src: img.src,
+            src: img.dataset.full || img.src,
             alt: img.alt,
             title: item.querySelector('h4')?.textContent || 'Photo'
           };
@@ -113,7 +113,7 @@ if ('IntersectionObserver' in window) {
         if (iframe) src = iframe.src;
       } else {
         const img = item.querySelector('img');
-        if (img) src = img.src;
+        if (img) src = img.dataset.full || img.src;
       }
       if (!src) return;
       currentIndex = lightboxPhotos.findIndex(p => p.src === src);
