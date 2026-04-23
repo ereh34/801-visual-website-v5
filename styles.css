@@ -203,6 +203,24 @@ h1.hero-h span { color: var(--blue-light); }
 .port-item img { width: 100%; height: auto; display: block; }
 .port-item img ~ .port-ph { display: none; }
 
+/* Play button overlay for video items */
+[data-media-type="video"]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  background: rgba(255,255,255,0.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232c4a7c'%3E%3Cpolygon points='6%2C3 20%2C12 6%2C21'/%3E%3C/svg%3E") center/20px no-repeat;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.3);
+  transition: opacity 0.22s;
+}
+[data-media-type="video"]:hover::after { opacity: 0; }
+
 /* ══════════════════════════════════
    ABOUT / DARK STATS SECTION
    ══════════════════════════════════ */
