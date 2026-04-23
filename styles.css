@@ -303,8 +303,8 @@ h1.hero-h span { color: var(--blue-light); }
 .svc-perfect-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 5px; }
 .svc-perfect p { font-size: 13px; color: var(--gray-dark); line-height: 1.6; margin-bottom: 0; }
 .svc-btns { display: flex; gap: 10px; flex-wrap: wrap; }
-.svc-photo { background: var(--gray-light); border-radius: 10px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.svc-photo img { width: 100%; height: 100%; object-fit: cover; }
+.svc-photo { background: var(--gray-light); border-radius: 10px; overflow: hidden; }
+.svc-photo img { width: 100%; height: auto; display: block; }
 .svc-photo svg { opacity: 0.2; }
 .packages-section { padding: 72px 0; background: var(--off-white); }
 .packages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
