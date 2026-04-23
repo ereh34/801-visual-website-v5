@@ -1,0 +1,7 @@
+{
+  "name": "801-visual-website",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rm -rf dist && mkdir dist && cp *.html *.js *.css *.svg dist/ && cp *.png logo-dark.jpg logo-light.jpg dist/ && cp -r assets dist/"
+  }
+}
