@@ -65,7 +65,6 @@ if ('IntersectionObserver' in window) {
   const lightbox = document.getElementById('lightbox');
   if (!lightbox) return;
 
-  const lightboxImg = document.getElementById('lightboxImg');
   const lightboxTitle = document.getElementById('lightboxTitle');
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxPrev = document.getElementById('lightboxPrev');
