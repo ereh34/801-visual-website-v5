@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Media Services | Video Production, Photography & Social Content | Salt Lake City, Utah</title>
 <meta name="description" content="Sports video, brand video, commercial photography, event coverage, and social media content creation in Salt Lake City, Utah. Built for sports teams and corporate brands.">
-<link rel="canonical" href="https://www.801visual.com/services">
+<link rel="canonical" href="https://801visual.com/services">
 <meta property="og:title" content="Services | 801 Visual Media Company">
 <meta property="og:description" content="Full-service media for sports teams and corporate brands. Game coverage, media days, brand video, event coverage, photography, and design in Salt Lake City, Utah.">
-<meta property="og:image" content="https://www.801visual.com/assets/full-res/hero_photo.jpg">
-<meta property="og:url" content="https://www.801visual.com/services">
+<meta property="og:image" content="https://801visual.com/assets/full-res/hero_photo.jpg">
+<meta property="og:url" content="https://801visual.com/services">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Services | 801 Visual Media Company">
 <meta name="twitter:description" content="Full-service media for sports teams and corporate brands. Game coverage, media days, brand video, event coverage, photography, and design in Salt Lake City, Utah.">
-<meta name="twitter:image" content="https://www.801visual.com/assets/full-res/hero_photo.jpg">
+<meta name="twitter:image" content="https://801visual.com/assets/full-res/hero_photo.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you travel outside Salt Lake City?","acceptedAnswer":{"@type":"Answer","text":"Yes. We regularly travel throughout Utah and beyond for projects."}},{"@type":"Question","name":"How does pricing work?","acceptedAnswer":{"@type":"Answer","text":"Every project is custom quoted. We don't do one-size-fits-all packages. Book a call or fill out the form and you'll have a number within 48 hours."}},{"@type":"Question","name":"Do you offer retainer or season-long packages?","acceptedAnswer":{"@type":"Answer","text":"Yes. For teams needing full-season coverage, or businesses wanting consistent monthly content, we offer retainer packages with priority scheduling and preferred rates. Ask about this on your discovery call."}}]}</script>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,7 +86,7 @@
           <a href="work.html" class="btn btn-outline-dk btn-sm">See Examples</a>
         </div>
       </div>
-      <div class="svc-photo"><img src="assets/full-res/801_Website_05.jpg" alt="Game Day Coverage"></div>
+      <div class="svc-photo" data-lightbox="true"><img src="assets/full-res/801_Website_05.jpg" data-full="assets/full-res/801_Website_05.jpg" loading="lazy" alt="Game Day Coverage"></div>
     </div>
 
     <!-- 02: MEDIA DAY PACKAGES -->
@@ -110,7 +110,7 @@
           <a href="work.html" class="btn btn-outline-dk btn-sm">See Examples</a>
         </div>
       </div>
-      <div class="svc-photo"><img src="assets/full-res/801_Website_10.jpg" alt="Media Day Packages"></div>
+      <div class="svc-photo" data-lightbox="true"><img src="assets/full-res/801_Website_10.jpg" data-full="assets/full-res/801_Website_10.jpg" loading="lazy" alt="Media Day Packages"></div>
     </div>
 
     <!-- ── CORPORATE SERVICES ── -->
@@ -135,7 +135,7 @@
           <a href="work.html" class="btn btn-outline-dk btn-sm">See Examples</a>
         </div>
       </div>
-      <div class="svc-photo"><img src="assets/full-res/801_Website_Corporate_07.jpg" alt="Event Coverage"></div>
+      <div class="svc-photo" data-lightbox="true"><img src="assets/full-res/801_Website_Corporate_07.jpg" data-full="assets/full-res/801_Website_Corporate_07.jpg" loading="lazy" alt="Event Coverage"></div>
     </div>
 
     <!-- 04: BRAND & COMMERCIAL MEDIA COVERAGE -->
@@ -159,7 +159,7 @@
           <a href="work.html" class="btn btn-outline-dk btn-sm">See Examples</a>
         </div>
       </div>
-      <div class="svc-photo"><img src="assets/full-res/801_Website_Services01.jpg" alt="Brand & Commercial Media Coverage"></div>
+      <div class="svc-photo" data-lightbox="true"><img src="assets/full-res/801_Website_Services01.jpg" data-full="assets/full-res/801_Website_Services01.jpg" loading="lazy" alt="Brand & Commercial Media Coverage"></div>
     </div>
 
     <!-- ── SHARED SERVICES ── -->
@@ -183,7 +183,7 @@
           <a href="contact.html" class="btn btn-primary btn-sm">Get a Quote &rarr;</a>
         </div>
       </div>
-      <div class="svc-photo"><img src="assets/full-res/801_Website_Graphic_2.jpg" alt="Miscellaneous Photo & Design"></div>
+      <div class="svc-photo" data-lightbox="true"><img src="assets/full-res/801_Website_Graphic_2.jpg" data-full="assets/full-res/801_Website_Graphic_2.jpg" loading="lazy" alt="Miscellaneous Photo & Design"></div>
     </div>
 
   </div>
@@ -256,6 +256,17 @@
     <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.35);margin-top:10px;">Serving Salt Lake City, Provo, Ogden, Park City, and Murray, Utah.</p>
   </div>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <div class="lightbox-content">
+    <div id="lightboxMedia"></div>
+    <h3 id="lightboxTitle" style="display:none;"></h3>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&lt;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&gt;</button>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>

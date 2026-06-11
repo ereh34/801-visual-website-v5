@@ -1,3 +1,9 @@
+# build output
+dist/
+
+# local Claude Code session files
+.claude/
+
 # wrangler files
 .wrangler
 .dev.vars*

@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About 801 Visual | Sports & Corporate Media Company | Salt Lake City, Utah</title>
 <meta name="description" content="801 Visual was founded in Salt Lake City by Eli Rehmer. We bring pro-level media standards to sports teams and corporate brands across Utah.">
-<link rel="canonical" href="https://www.801visual.com/about">
+<link rel="canonical" href="https://801visual.com/about">
 <meta property="og:title" content="About | 801 Visual Media Company">
 <meta property="og:description" content="Started in sports. Trusted by the best. Bringing pro-level standards to every project.">
-<meta property="og:image" content="https://www.801visual.com/assets/full-res/hero_photo.jpg">
-<meta property="og:url" content="https://www.801visual.com/about">
+<meta property="og:image" content="https://801visual.com/assets/full-res/hero_photo.jpg">
+<meta property="og:url" content="https://801visual.com/about">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About | 801 Visual Media Company">
 <meta name="twitter:description" content="Started in sports. Trusted by the best. Bringing pro-level standards to every project.">
-<meta name="twitter:image" content="https://www.801visual.com/assets/full-res/hero_photo.jpg">
+<meta name="twitter:image" content="https://801visual.com/assets/full-res/hero_photo.jpg">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,9 +62,9 @@
 <section class="section-pad">
   <div class="container">
     <div class="founder-grid">
-      <div class="founder-photo">
-        
-        <img src="assets/full-res/ER_Headshot_JPG.jpg" alt="Eli Rehmer, Founder of 801 Visual" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+      <div class="founder-photo" data-lightbox="true">
+
+        <img src="assets/full-res/ER_Headshot_JPG.jpg" data-full="assets/full-res/ER_Headshot_JPG.jpg" alt="Eli Rehmer, Founder of 801 Visual" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
         <div class="founder-badge">
           <strong>Eli Rehmer</strong>
           <span>Founder · Sports & Corporate Media</span>
@@ -160,6 +160,17 @@
     <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.35);margin-top:10px;">Serving Salt Lake City, Provo, Ogden, Park City, and Murray, Utah.</p>
   </div>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <div class="lightbox-content">
+    <div id="lightboxMedia"></div>
+    <h3 id="lightboxTitle" style="display:none;"></h3>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&lt;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&gt;</button>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>

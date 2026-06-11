@@ -304,6 +304,7 @@ h1.hero-h span { color: var(--blue-light); }
 .svc-perfect p { font-size: 13px; color: var(--gray-dark); line-height: 1.6; margin-bottom: 0; }
 .svc-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 .svc-photo { background: var(--gray-light); border-radius: 10px; overflow: hidden; }
+.svc-photo[data-lightbox], .founder-photo[data-lightbox] { cursor: pointer; }
 .svc-photo img { width: 100%; height: auto; display: block; }
 .svc-photo svg { opacity: 0.2; }
 .packages-section { padding: 72px 0; background: var(--off-white); }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.801visual.com/sitemap.xml
+Sitemap: https://801visual.com/sitemap.xml
